@@ -27,7 +27,7 @@ public class Recipe {
     private Byte[] image;
 
     @Enumerated(value = EnumType.STRING)
-    private Difficulty difficulty;
+    private Tags tags;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;

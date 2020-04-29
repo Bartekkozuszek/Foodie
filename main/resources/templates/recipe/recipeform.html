@@ -66,8 +66,8 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control" th:field="*{difficulty}">
-                                        <option th:each="difficultyValue: ${T(org.example.springfoodieapp.domain.Difficulty).values()}"
+                                    <select class="form-control" th:field="*{tags}">
+                                        <option th:each="difficultyValue: ${T(org.example.springfoodieapp.domain.Tags).values()}"
                                                 th:value="${difficultyValue.name()}"
                                                 th:text="${difficultyValue.name()}"
                                         >val</option>
