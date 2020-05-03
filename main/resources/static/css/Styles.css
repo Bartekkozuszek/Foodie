@@ -1,0 +1,12 @@
+body {
+background: #ffffff;
+}
+
+.hero-image {
+    height: 500px;
+    background: url('images/hero3840x2160.jpg');
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
