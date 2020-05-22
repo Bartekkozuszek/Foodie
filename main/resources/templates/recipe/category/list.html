@@ -28,16 +28,16 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-10">
-                            <h1 class="panel-title">Ingredients</h1>
+                            <h1 class="panel-title">Categories</h1>
                         </div>
                         <div class="col-md-2">
-                            <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">new</a>
+                            <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/new'}" role="button">new</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
 
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.categories)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
                             <tr>
@@ -62,12 +62,12 @@
                                 <td><a href="#">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
-                            <tr th:each="ingredient : ${recipe.ingredients}">
-                                <td th:text="${ingredient.id}">334</td>
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                            <tr th:each="category : ${recipe.categories}">
+                                <td th:text="${category.id}">334</td>
+                                <td th:text="${category.description}">Tasty Goodnees 3</td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>

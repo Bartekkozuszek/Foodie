@@ -37,15 +37,17 @@ httm://www.thymeleaf.org ">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1 class="panel-title">My Recipes!</h1>
+                    <h1 class="panel-title">Popular recipes</h1>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
                             <tr>
+                                <th>Image</th>
                                 <th>ID</th>
-                                <th>Description</th>
+                                <th>Title</th>
+                                <th>Category</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
@@ -57,14 +59,21 @@ httm://www.thymeleaf.org ">
                                 <td th:text="${recipe.description}"></td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
+                                <td><img th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
+                                         width="50" height="50"></td>
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.description}"></td>
+                                <td> <li th:each="category : ${recipe.categories}" th:text="${category.description}"> </td>
                                 <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} +'/update'}">Update</a></td>
                                 <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} +'/delete'}">delete</a></td>
                             </tr>
                         </table>
                     </div>
+                </div>
+
+                <div class="btn"> <a class="btn btn-default" href="#"
+                                     th:href="@{'/recipe/new'}" role="button">Add recipe</a>
                 </div>
             </div>
         </div>

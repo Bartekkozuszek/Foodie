@@ -2,10 +2,10 @@ package org.example.springfoodieapp.controllers;
 
 import org.example.springfoodieapp.commands.IngredientCommand;
 import org.example.springfoodieapp.commands.RecipeCommand;
-import org.example.springfoodieapp.commands.UnitOfMeasureCommand;
+
 import org.example.springfoodieapp.services.IngredientService;
 import org.example.springfoodieapp.services.RecipeService;
-import org.example.springfoodieapp.services.UnitOfMeasureService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +15,10 @@ public class IngredientController {
 
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
-    private final UnitOfMeasureService unitOfMeasureService;
 
-
-    public IngredientController(RecipeService recipeService, IngredientService ingredientService, UnitOfMeasureService unitOfMeasureService) {
+    public IngredientController(RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
-        this.unitOfMeasureService = unitOfMeasureService;
     }
 
     @GetMapping
@@ -56,9 +53,6 @@ public class IngredientController {
         ingredientCommand.setRecipeId(Long.valueOf(recipeId));
         model.addAttribute("ingredient", ingredientCommand);
 
-        ingredientCommand.setUom(new UnitOfMeasureCommand());
-
-        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
         return "recipe/ingredient/ingredientform";
 
     }
@@ -69,7 +63,6 @@ public class IngredientController {
                                          @PathVariable String id, Model model){
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
 
-        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
         return "recipe/ingredient/ingredientform";
     }
 

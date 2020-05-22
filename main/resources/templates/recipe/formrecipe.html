@@ -36,23 +36,24 @@
                                     <input type="text" class="form-control" th:field="*{description}"/>
                                 </div>
                             </div>
-
-<!--                            <li th:each="category : ${recipe.categories}" th:text="${category.getDescription()}">cat three</li>-->
-                      <!--      <li th:each="ingredient : ${recipe.ingredients}"
-                                th:text="${(ingredient.getAmount() +
-                                        ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar-->
-
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Categories:</label>
                                 </div>
-                         <!--       <select class="mdb-select md-form">
-                                    <option
-                                            th:each="category : ${recipe.categories}"
-                                            th:text="${(category.getId +
-                                        ' - ' + category.getDescription())}">
-                                    ></option>
-                                </select>-->
+                                <div class="col-md-9 form-group">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="checkbox" value="${}"/>
+                                            Cat 1
+                                        </label>
+                                    </div>
+                                    <div class="radio" th:remove="all">
+                                        <label>
+                                            <input type="checkbox" value=""/>
+                                            Cat 2
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
@@ -85,6 +86,32 @@
                                 <div class="col-md-3 form-group">
                                     <label>URL:</label>
                                     <input type="text" class="form-control" th:field="*{url}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-11 ">
+                                    <h1 class="panel-title">Ingredients</h1>
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-default" href="#" role="button">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul>
+                                        <li th:remove="all">1 Cup of milk</li>
+                                        <li th:remove="all">1 Teaspoon of chocolate</li>
+                                        <li th:each="ingredient : ${recipe.ingredients}"
+                                            th:text="${(ingredient.getAmount() +
+                                        ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

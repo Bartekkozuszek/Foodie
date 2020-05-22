@@ -19,20 +19,13 @@ public class Ingredient {
     @ManyToOne
     private Recipe recipe;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeasure uom;
-
     public Ingredient() {
     }
 
 
-    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
+    public Ingredient(String description, BigDecimal amount) {
         this.description = description;
         this.amount = amount;
-        this.uom = uom;
     }
 
-    public UnitOfMeasure getUom() {
-        return uom;
-    }
 }

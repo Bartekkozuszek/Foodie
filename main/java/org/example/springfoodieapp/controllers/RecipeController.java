@@ -37,10 +37,10 @@ public class RecipeController {
         return "recipe/recipeform";
     }
 
-    @PostMapping
-    @RequestMapping("recipe")
+    @PostMapping("recipe/save")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+        System.out.println(savedCommand);
         return "redirect:/recipe/show/" + savedCommand.getId();
     }
 
@@ -50,4 +50,6 @@ public class RecipeController {
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/";
     }
+
+
 }

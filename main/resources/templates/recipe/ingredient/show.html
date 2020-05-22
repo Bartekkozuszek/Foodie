@@ -23,7 +23,6 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
-
                 <div class="panel-heading">
                     <h1 class="panel-title">Ingredient</h1>
                 </div>
@@ -47,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td th:text="${ingredient.id}">334</td>
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.uom.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
+                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
                             </tr>
                         </table>
                     </div>
@@ -55,7 +54,12 @@
             </div>
         </div>
     </div>
+    <div class="btn"> <a class="btn btn-default" href="#"
+                         th:href="@{'/'}" role="button">Add recipe</a>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">new</a>
+    </div>
 </div>
-
 </body>
 </html>

@@ -10,12 +10,6 @@ import org.springframework.lang.Nullable;
 @Component
 public class IngredientToIngredientCommand implements Converter<Ingredient, IngredientCommand> {
 
-    private final UnitOfMeasureToUnitOfMeasureCommand uomConverter;
-
-    public IngredientToIngredientCommand(UnitOfMeasureToUnitOfMeasureCommand uomConverter) {
-        this.uomConverter = uomConverter;
-    }
-
     @Synchronized
     @Nullable
     @Override
@@ -29,7 +23,6 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
         ingredientCommand.setRecipeId(ingredient.getRecipe().getId());
         ingredientCommand.setAmount(ingredient.getAmount());
         ingredientCommand.setDescription(ingredient.getDescription());
-        ingredientCommand.setUom(uomConverter.convert(ingredient.getUom()));
         return ingredientCommand;
     }
 }

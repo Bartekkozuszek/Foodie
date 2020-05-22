@@ -6,10 +6,8 @@ import org.example.springfoodieapp.converts.IngredientToIngredientCommand;
 import org.example.springfoodieapp.domain.Ingredient;
 import org.example.springfoodieapp.domain.Recipe;
 import org.example.springfoodieapp.repositories.RecipeRepository;
-import org.example.springfoodieapp.repositories.UnitOfMeasureRepository;
-import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
+import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
@@ -17,13 +15,11 @@ public class IngredientServiceImpl implements IngredientService {
 
     private final IngredientToIngredientCommand ingredientToIngredientCommand;
     private final RecipeRepository recipeRepository;
-    private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final IngredientCommandToIngredient ingredientCommandToIngredient;
 
-    public IngredientServiceImpl(IngredientToIngredientCommand ingredientToIngredientCommand, RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository, IngredientCommandToIngredient ingredientCommandToIngredient) {
+    public IngredientServiceImpl(IngredientToIngredientCommand ingredientToIngredientCommand, RecipeRepository recipeRepository, IngredientCommandToIngredient ingredientCommandToIngredient) {
         this.ingredientToIngredientCommand = ingredientToIngredientCommand;
         this.recipeRepository = recipeRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
         this.ingredientCommandToIngredient = ingredientCommandToIngredient;
     }
 
@@ -64,9 +60,7 @@ public class IngredientServiceImpl implements IngredientService {
                 Ingredient ingredientFound = ingredientOptional.get();
                 ingredientFound.setDescription(command.getDescription());
                 ingredientFound.setAmount(command.getAmount());
-                ingredientFound.setUom(unitOfMeasureRepository
-                        .findById(command.getUom().getId())
-                        .orElseThrow(() -> new RuntimeException("UOM NOT FOUND")));
+
             } else {
                 //add new Ingredient
                 Ingredient ingredient = ingredientCommandToIngredient.convert(command);
@@ -82,11 +76,9 @@ public class IngredientServiceImpl implements IngredientService {
 
             //check by description
             if(!savedIngredientOptional.isPresent()){
-                //not totally safe... But best guess
                 savedIngredientOptional = savedRecipe.getIngredients().stream()
                         .filter(recipeIngredients -> recipeIngredients.getDescription().equals(command.getDescription()))
                         .filter(recipeIngredients -> recipeIngredients.getAmount().equals(command.getAmount()))
-                        .filter(recipeIngredients -> recipeIngredients.getUom().getId().equals(command.getUom().getId()))
                         .findFirst();
             }
 

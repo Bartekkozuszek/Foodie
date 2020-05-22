@@ -1,12 +1,11 @@
-INSERT INTO category (description) VALUES ('American');
-INSERT INTO category (description) VALUES ('Italian');
-INSERT INTO category (description) VALUES ('Mexican');
-INSERT INTO category (description) VALUES ('Fast Food');
-INSERT INTO unit_of_measure (description) VALUES ('Teaspoon');
-INSERT INTO unit_of_measure (description) VALUES ('Tablespoon');
-INSERT INTO unit_of_measure (description) VALUES ('Cup');
-INSERT INTO unit_of_measure (description) VALUES ('Pinch');
-INSERT INTO unit_of_measure (description) VALUES ('Ounce');
-INSERT INTO unit_of_measure (description) VALUES ('Each');
-INSERT INTO unit_of_measure (description) VALUES ('Dash');
-INSERT INTO unit_of_measure (description) VALUES ('Pint');
+INSERT INTO category (description) VALUES ('Apertif');
+INSERT INTO category (description) VALUES ('Meat');
+INSERT INTO category (description) VALUES ('Fish');
+INSERT INTO category (description) VALUES ('Bird');
+INSERT INTO category (description) VALUES ('Soup');
+INSERT INTO category (description) VALUES ('Sides');
+INSERT INTO category (description) VALUES ('Sauces');
+INSERT INTO category (description) VALUES ('Dessert');
+INSERT INTO category (description) VALUES ('Buffe');
+
+

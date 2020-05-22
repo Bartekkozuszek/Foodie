@@ -22,25 +22,30 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <!--/*@thymesVar id="ingredient" type="guru.springframework.commands.IngredientCommand"*/-->
-            <form  th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'} " method="post">
+            <form  th:object="${category}" th:action="@{'/recipe/' + ${category.getRecipeId()} + '/category'} " method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h1 class="panel-title">Edit Ingredient Information</h1>
+                            <h1 class="panel-title">Edit Category Information</h1>
                         </div>
                         <div class="panel-body">
 
 
                             <div class="row">
-                                <div class="col-md-3 form-group">
-                                    <label>Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
-                                </div>
-
-                                <div class="col-md-3 form-group">
-                                    <label>Amount:</label>
-                                    <input type="number" class="form-control" th:field="*{amount}"/>
+                               <div class="col-md-3 form-group">
+                                   <label>Description:</label>
+                                   <select th:field="*{description}">
+                                       <option th:value="'Apertif'">Apertif</option>
+                                       <option th:value="'Meat'">Meat</option>
+                                       <option th:value="'Fish'">Fish</option>
+                                       <option th:value="'Bird'">Bird</option>
+                                       <option th:value="'Soup'">Soup</option>
+                                       <option th:value="'Sides'">Sides</option>
+                                       <option th:value="'Sauces'">Sauces</option>
+                                       <option th:value="'Dessert'">Dessert</option>
+                                       <option th:value="'Buffe'">Buffe</option>
+                                   </select>
                                 </div>
 
                             </div>
