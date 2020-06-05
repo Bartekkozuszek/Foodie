@@ -1,24 +1,115 @@
 <!DOCTYPE html >
-<html lang="en" xmlns:th="httm://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="httm://www.thymeleaf.org
-httm://www.thymeleaf.org ">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Recipe Home</title>
-    <!-- Latest compiled and minified CSS -->
+    <title>Recipe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
-    <link href="../static/css/Styles.css" th:href="@{/css/Styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/Styles.css" th:href="@{/css/Styles.css}" />
 
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
+
 <body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{'/'}"><img src="/css/images/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active-link" href="#">Hem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/recipe/new'}">Skapa recept</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <div class="overlay">
+            <div class="row">
+                <div class="col-md-6 mb-6">
+                    <h1>A Warm Welcome!</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+                    <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sub-header">
+        <h2>Välkommen till Matdelaren</h2>
+        <div class="underline-line"></div>
+        <p>En sida för dig som älskar att dela och ta del av recept!</p>
+    </div>
+    <div class="sub-popular" style=" background-color: #fff;
+    padding: 48px 60px;">
+        <h2>Populära Recept</h2>
+        <div class="underline-line"></div>
+        <div class="popular-recipes"></div>
+        <button class="btn btn-primary" th:each="tagsValue: ${T(org.example.springfoodieapp.domain.Tags).values()}"
+                th:value="${tagsValue.name()}"
+                th:text="${tagsValue.name()}"></button>
+    </div>
+
+
+    <!-- Page Features -->
+    <div class="row text-center">
+        <div class="col-lg-3 col-md-3 mb-6 recipe-box"  th:each="recipe : ${recipes}">
+            <div class="card h-100">
+                <img class="card-img-top" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${recipe.description}"></h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}" class="btn btn-primary">Find Out More!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-popular" style=" background-color: #fff;
+    padding: 48px 60px;">
+    </div>
+
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<!--<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright <img src="/css/images/logo.png" alt=""> 2020</p>
+    </div>
+    &lt;!&ndash; /.container &ndash;&gt;
+</footer>-->
+
+
+<!--<body>
 <section class="hero-image">
     <div class="container-fluid">
         <div class="row">
@@ -29,7 +120,6 @@ httm://www.thymeleaf.org ">
             </div>
         </div>
     </div>
-
 </section>
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
@@ -50,14 +140,6 @@ httm://www.thymeleaf.org ">
                                 <th>Category</th>
                             </tr>
                             </thead>
-                            <tr th:remove="all">
-                                <td th:text="${recipe.id}"></td>
-                                <td th:text="${recipe.description}"></td>
-                            </tr>
-                            <tr th:remove="all">
-                                <td th:text="${recipe.id}"></td>
-                                <td th:text="${recipe.description}"></td>
-                            </tr>
                             <tr th:each="recipe : ${recipes}">
                                 <td><img th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
                                          width="50" height="50"></td>
@@ -78,7 +160,7 @@ httm://www.thymeleaf.org ">
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 </body>
 </html>

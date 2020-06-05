@@ -1,24 +1,124 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Show Recipe</title>
-
-    <!-- Latest compiled and minified CSS -->
-    <link href="../static/css/Styles.css" th:href="@{/css/Styles.css}" rel="stylesheet" />
+    <title>MATDELAREN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/Styles.css" th:href="@{/css/Styles.css}" />
 
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="container-fluid" style="margin-top: 20px">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{'/'}"><img src="/css/images/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active-link" href="#">Show</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"
+                       th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Byt bild</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="show-recipe-img"><img
+            th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="" src="#">
+    </header>
+                <div class="col-md-4 mb-4 sub-popular">
+                    <h1 th:text="*{recipe.getDescription()}"></h1>
+                    <div class="underline-line"></div>
+                </div>
+</div>
+<div class="container">
+    <div class="row sub-popular">
+        <div class="h2">Categories: <a class="btn btn-primary" href="#"
+                           th:href="@{'/recipe/' + ${recipe.id} + '/category/new'}" role="button">Lägg till kategori</a>
+        </div>
+        <div class="underline-line-sub"></div>
+    </div>
+        <div class="row">
+            <div class="col-md-4 mb-4 sub-popular" th:each="category : ${recipe.categories}">
+                <div class="h2" th:text="${category.description}"></div>
+            <div class="underline-line-sub"></div>
+<!--            <div class="btn"><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/show'}">View</a></div>-->
+            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Update</a>
+            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Delete</a>
+        </div>
+        </div>
+</div>
+<div class="container">
+                        <div class="row sub-header-show">
+                            <div class="col-md-4">
+                                <h4>Prep Time:</h4>
+                                <div class="underline-line-sub"></div>
+                                <p th:text="${recipe.prepTime + '  min'}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Cook Time:</h4>
+                                <div class="underline-line-sub"></div>
+                                <p th:text="${recipe.cookTime + ' min'}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Servings:</h4>
+                                <div class="underline-line-sub"></div>
+                                <p th:text="${recipe.servings + ' port'}"></p>
+                            </div>
+                            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a>
+                        </div>
+</div>
+<div class="container">
+    <div class="row sub-popular">
+        <h2>Ingredients:  <a class="btn btn-primary" href="#"
+                             th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">Lägg till ingredientser</a></h2>
+        <div class="underline-line-sub"></div>
+        <ul th:each="ingredient: ${recipe.ingredients}">
+            <span class="h4" th:text="${ingredient.getDescription() +
+                                '  ' + ingredient.getAmount() + ' ' + ingredient.getUnit()}"></span>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row sub-header-show">
+        <h2>Directions:</h2>
+        <div class="underline-line-sub"></div>
+        <div class="col-md-4">
+            <p id="directions" th:text="${recipe.directions}">
+        </div>
+        <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a>
+    </div>
+</div>
+<div class="row sub-popular"></div>
+
+
+
+<!--<div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="pannel-group">
@@ -33,7 +133,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                   <!--         <div class="col-md-3">
+                   &lt;!&ndash;         <div class="col-md-3">
                                 <h5>Categories:</h5>
                             </div>
                             <div class="col-md-3">
@@ -42,12 +142,11 @@
                                     <li th:remove="all">cat two</li>&ndash;&gt;
                                     <li th:each="category : ${recipe.categories}" th:text="${category.getDescription()}">cat three</li>
                                 </ul>
-                            </div>-->
+                            </div>&ndash;&gt;
                             <div class="col-md-3">
                                 <img
                                      th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
-                                     width="100%" height="100%'
-">
+                                     width="100%" height="100%">
                             </div>
                         </div>
                         <div class="row">
@@ -161,7 +260,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+</div>-->
 </body>
 </html>

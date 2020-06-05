@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.springfoodieapp.commands.RecipeCommand;
 import org.example.springfoodieapp.converts.RecipeCommandToRecipe;
 import org.example.springfoodieapp.converts.RecipeToRecipeCommand;
-import org.example.springfoodieapp.domain.Category;
 import org.example.springfoodieapp.domain.Recipe;
 import org.example.springfoodieapp.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;

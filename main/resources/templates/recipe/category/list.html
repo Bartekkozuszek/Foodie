@@ -1,25 +1,82 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>List Ingredients</title>
-
-    <!-- Latest compiled and minified CSS -->
-    <link href="../static/css/Styles.css" th:href="@{/css/Styles.css}" rel="stylesheet" />
+    <title>MATDELAREN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/Styles.css" th:href="@{/css/Styles.css}" />
 
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
-<!--/*@thymesVar id="ingredients" type="java.util.Set<guru.springframework.commands.IngredientCommand>"*/-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{'/'}"><img src="/css/images/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active-link" href="#">Kategorier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+    <div class="col-md-6 mb-6 sub-popular">
+        <h1>Kategorier</h1>
+        <div class="underline-line"></div>
+        <ul th:each="category : ${recipe.categories}">
+            <span class="h4" th:text="${category.description}"></span>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Update</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Delete</a>
+        </ul>
+        <a class="btn btn-primary" href="#"
+           th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">Lägg till kategori</a>
+    </div>
+    </div>
+
+</div>
+
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-6 sub-popular">
+            <h1>Ingredientser</h1>
+            <div class="underline-line"></div>
+            <ul th:each="ingredient: ${recipe.ingredients}">
+            <span class="h4" th:text="${ingredient.getDescription() +
+                                '  ' + ingredient.getAmount() + ' ' + ingredient.getUnit()}"></span>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a>
+            </ul>
+            <a class="btn btn-primary" href="#"
+               th:href="@{'/recipe/' + ${recipe.id} + '/category/new'}" role="button">Lägg till kategori</a>
+        </div>
+    </div>
+</div>-->
+
+
+
+
+<!--
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -76,6 +133,7 @@
         </div>
     </div>
 </div>
+-->
 
 </body>
 </html>

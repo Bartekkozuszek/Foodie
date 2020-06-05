@@ -27,6 +27,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         }
         ingredient.setAmount(source.getAmount());
         ingredient.setDescription(source.getDescription());
+        ingredient.setUnit(source.getUnit());
         return ingredient;
     }
 }

@@ -27,7 +27,9 @@ public class SwaggerConfig {
 
         return new ApiInfoBuilder().title("Foodie")
                 .description("An Food Blog REST API")
-                .contact(new Contact("Bartek Kozuszek", "https://github.com/Bartekkozuszek/Foodie", "Bartekkozuszek@gmail.com"))
+                .contact(new Contact("Bartek Kozuszek",
+                        "https://github.com/Bartekkozuszek/Foodie",
+                        "Bartekkozuszek@gmail.com"))
                 .build();
     }
 }
