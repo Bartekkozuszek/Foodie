@@ -49,58 +49,47 @@
     <header class="show-recipe-img"><img
             th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="" src="#">
     </header>
-                <div class="col-md-4 mb-4 sub-popular">
-                    <h1 th:text="*{recipe.getDescription()}"></h1>
-                    <div class="underline-line"></div>
-                </div>
-</div>
-<div class="container">
-    <div class="row sub-popular">
-        <div class="h2">Categories: <a class="btn btn-primary" href="#"
-                           th:href="@{'/recipe/' + ${recipe.id} + '/category/new'}" role="button">Lägg till kategori</a>
-        </div>
-        <div class="underline-line-sub"></div>
+    <div class="col-md-4 mb-4 sub-popular">
+        <h1 th:text="*{recipe.getDescription()}"></h1>
+        <div class="underline-line"></div>
     </div>
-        <div class="row">
-            <div class="col-md-4 mb-4 sub-popular" th:each="category : ${recipe.categories}">
-                <div class="h2" th:text="${category.description}"></div>
-            <div class="underline-line-sub"></div>
-<!--            <div class="btn"><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/show'}">View</a></div>-->
-            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Update</a>
-            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Delete</a>
-        </div>
-        </div>
-</div>
-<div class="container">
-                        <div class="row sub-header-show">
-                            <div class="col-md-4">
-                                <h4>Prep Time:</h4>
-                                <div class="underline-line-sub"></div>
-                                <p th:text="${recipe.prepTime + '  min'}"></p>
-                            </div>
-                            <div class="col-md-4">
-                                <h4>Cook Time:</h4>
-                                <div class="underline-line-sub"></div>
-                                <p th:text="${recipe.cookTime + ' min'}"></p>
-                            </div>
-                            <div class="col-md-4">
-                                <h4>Servings:</h4>
-                                <div class="underline-line-sub"></div>
-                                <p th:text="${recipe.servings + ' port'}"></p>
-                            </div>
-                            <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a>
-                        </div>
 </div>
 <div class="container">
     <div class="row sub-popular">
-        <h2>Ingredients:  <a class="btn btn-primary" href="#"
-                             th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">Lägg till ingredientser</a></h2>
+        <div class="h2">Categories</div>
+        <div class="underline-line-sub"></div>
+        <ul th:each="category : ${recipe.categories}">
+            <span class="h3" th:text="${category.description}"></span>
+            <div class="underline-line-sub"></div>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row sub-header-show">
+        <div class="col-md-4">
+            <h4>Prep Time:</h4>
+            <div class="underline-line-sub"></div>
+            <p th:text="${recipe.prepTime + '  min'}"></p>
+        </div>
+        <div class="col-md-4">
+            <h4>Cook Time:</h4>
+            <div class="underline-line-sub"></div>
+            <p th:text="${recipe.cookTime + ' min'}"></p>
+        </div>
+        <div class="col-md-4">
+            <h4>Servings:</h4>
+            <div class="underline-line-sub"></div>
+            <p th:text="${recipe.servings + ' port'}"></p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row sub-popular">
+        <h2>Ingredients</h2>
         <div class="underline-line-sub"></div>
         <ul th:each="ingredient: ${recipe.ingredients}">
             <span class="h4" th:text="${ingredient.getDescription() +
                                 '  ' + ingredient.getAmount() + ' ' + ingredient.getUnit()}"></span>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a>
         </ul>
     </div>
 </div>
@@ -111,7 +100,6 @@
         <div class="col-md-4">
             <p id="directions" th:text="${recipe.directions}">
         </div>
-        <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a>
     </div>
 </div>
 <div class="row sub-popular"></div>

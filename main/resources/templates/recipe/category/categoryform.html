@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                    <a class="nav-link" th:href="@{'/'}">Hem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active-link" href="#">Category</a>
+                    <a class="nav-link active-link" href="#">Kategorier</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
                 </li>
             </ul>
         </div>
@@ -55,16 +55,18 @@
         <div class="underline-line-sub"></div>
         <select class="h4" th:field="*{description}">
             <option class="h4" th:value="'Apertif'">Apertif</option>
-            <option class="h4" th:value="'Meat'">Meat</option>
-            <option class="h4" th:value="'Fish'">Fish</option>
-            <option class="h4" th:value="'Bird'">Bird</option>
-            <option class="h4" th:value="'Soup'">Soup</option>
-            <option class="h4" th:value="'Sides'">Sides</option>
-            <option class="h4" th:value="'Sauces'">Sauces</option>
+            <option class="h4" th:value="'Meat'">Kött</option>
+            <option class="h4" th:value="'Fish'">Fisk</option>
+            <option class="h4" th:value="'Bird'">Fågel</option>
+            <option class="h4" th:value="'Soup'">Soppa</option>
+            <option class="h4" th:value="'Sides'">Tillbehör</option>
+            <option class="h4" th:value="'Sauces'">Sås</option>
             <option class="h4" th:value="'Dessert'">Dessert</option>
             <option class="h4" th:value="'Buffe'">Buffe</option>
         </select>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Spara</button>
+        <a class="btn btn-primary" href="#"
+           th:href="@{'/recipe/show/' + ${recipeId} + '/'}" role="button">Tillbaka</a>
     </div>
 </form>
 </div>
