@@ -33,7 +33,7 @@
                     <a class="nav-link active-link" href="#">Kategorier</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -46,8 +46,8 @@
         <div class="underline-line"></div>
         <ul th:each="category : ${recipe.categories}">
             <span class="h4" th:text="${category.description}"></span>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Update</a>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Delete</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/update'}">Uppdate</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/category/' + ${category.id} + '/delete'}">Radera</a>
         </ul>
         <a class="btn btn-primary" href="#"
            th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">Lägg till kategori</a>

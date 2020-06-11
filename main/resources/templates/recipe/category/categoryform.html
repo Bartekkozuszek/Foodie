@@ -33,7 +33,7 @@
                     <a class="nav-link active-link" href="#">Kategorier</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -51,16 +51,16 @@
 <form  th:object="${category}" th:action="@{'/recipe/' + ${category.getRecipeId()} + '/category'} " method="post">
     <input type="hidden" th:field="*{id}"/>
     <div class="col-md-6 sub-popular">
-        <label class="h3">Description:</label>
+        <label class="h3">Kategorier</label>
         <div class="underline-line-sub"></div>
         <select class="h4" th:field="*{description}">
             <option class="h4" th:value="'Apertif'">Apertif</option>
-            <option class="h4" th:value="'Meat'">Kött</option>
-            <option class="h4" th:value="'Fish'">Fisk</option>
-            <option class="h4" th:value="'Bird'">Fågel</option>
-            <option class="h4" th:value="'Soup'">Soppa</option>
-            <option class="h4" th:value="'Sides'">Tillbehör</option>
-            <option class="h4" th:value="'Sauces'">Sås</option>
+            <option class="h4" th:value="'Kött'">Kött</option>
+            <option class="h4" th:value="'Fisk'">Fisk</option>
+            <option class="h4" th:value="'Fågel'">Fågel</option>
+            <option class="h4" th:value="'Soppa'">Soppa</option>
+            <option class="h4" th:value="'Tillbehör'">Tillbehör</option>
+            <option class="h4" th:value="'Sås'">Sås</option>
             <option class="h4" th:value="'Dessert'">Dessert</option>
             <option class="h4" th:value="'Buffe'">Buffe</option>
         </select>

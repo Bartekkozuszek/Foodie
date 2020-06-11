@@ -36,10 +36,7 @@
                     <a class="nav-link" th:href="@{'/recipe/new'}">Skapa recept</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -54,9 +51,9 @@
         <div class="overlay">
             <div class="row">
                 <div class="col-md-6 mb-6">
-                    <h1>A Warm Welcome!</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-                    <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+                    <h1><img src="/css/images/logo2.png" alt=""></h1>
+                    <p>En receptbank för alla matfantaster!</p>
+                    <a href="#" class="btn btn-primary btn-lg" th:href="@{'/recipe/new'}">Skapa recept</a>
                 </div>
             </div>
         </div>
@@ -66,14 +63,13 @@
         <div class="underline-line"></div>
         <p>En sida för dig som älskar att dela och ta del av recept!</p>
     </div>
-    <div class="sub-popular" style=" background-color: #fff;
-    padding: 48px 60px;">
-        <h2>Populära Recept</h2>
+    <div class="empty-div">
+     <!--   <h2>Populära Recept</h2>
         <div class="underline-line"></div>
         <div class="popular-recipes"></div>
-        <button class="btn btn-primary" th:each="tagsValue: ${T(org.example.springfoodieapp.domain.Tags).values()}"
+        <button class="btn btn-primary" th:each="tagsValue: ${T(org.example.springfoodieapp.domain.Tags).getSortedValue()}"
                 th:value="${tagsValue.name()}"
-                th:text="${tagsValue.name()}"></button>
+                th:text="${tagsValue.name()}" onclick="${T(org.example.springfoodieapp.domain.Tags).getSortedValue()}"></button>-->
     </div>
 
 
@@ -84,19 +80,15 @@
                 <img class="card-img-top" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="">
                 <div class="card-body">
                     <h4 class="card-title" th:text="${recipe.description}"></h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <p class="card-text" th:each="notes : ${recipe.notes}" th:text="${notes.recipeNotes}"></p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" th:href="@{'/recipe/view/' + ${recipe.id}}" class="btn btn-primary">Find Out More!</a>
+                    <a href="#" th:href="@{'/recipe/view/' + ${recipe.id}}" class="btn btn-primary">Visa recept</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="sub-popular" style=" background-color: #fff;
-    padding: 48px 60px;">
-    </div>
-
-
+    <div class="empty-div"></div>
 </div>
 <!-- /.container -->
 

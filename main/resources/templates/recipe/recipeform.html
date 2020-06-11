@@ -33,10 +33,7 @@
                     <a class="nav-link active-link" href="#">Skapa recept</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -54,27 +51,27 @@
   <form th:object="${recipe}" th:action="@{/recipe/save}" method="post">
        <input type="hidden" th:field="*{id}"/>
                     <div class="col-md-4 sub-header-show">
-      <label class="h4">Recipe Title:</label>
+      <label class="h4">Recept Titel</label>
       <div class="underline-line-sub"></div>
       <input type="text" class="form-control" th:field="*{description}"/>
   </div>
       <div class="col-md-4 sub-header-show">
-          <label class="h4">Prep Time:</label>
+          <label class="h4">Prep Tid</label>
           <div class="underline-line-sub"></div>
           <input type="text" class="form-control" th:field="*{prepTime}"/>
       </div>
       <div class="col-md-4 sub-header-show">
-          <label class="h4">Cook Time:</label>
+          <label class="h4">Tillagnings Tid</label>
           <div class="underline-line-sub"></div>
           <input type="text" class="form-control" th:field="*{cookTime}"/>
       </div>
       <div class="col-md-4 sub-header-show">
-          <label class="h4">Servings:</label>
+          <label class="h4">Portioner</label>
           <div class="underline-line-sub"></div>
           <input type="text" class="form-control" th:field="*{servings}"/>
       </div>
       <div class="col-md-4 sub-header-show">
-          <label class="h4" for="tags">Tags:</label>
+          <label class="h4" for="tags">Tags</label>
           <div class="underline-line-sub"></div>
           <select class="form-control selectpicker" th:field="*{tags}" id="tags">
               <option th:each="tags: *{T(org.example.springfoodieapp.domain.Tags).values()}"
@@ -84,7 +81,7 @@
           </select>
       </div>
       <div class="col-md-4 sub-header-show">
-          <label class="h4" for="tags">Tags:</label>
+          <label class="h4" for="tags">Tags</label>
           <div class="underline-line-sub"></div>
           <select class="form-control selectpicker" th:field="*{tags}" id="tags">Tags
               <option th:each="tags: *{T(org.example.springfoodieapp.domain.Tags).values()}"
@@ -94,7 +91,7 @@
           </select>
       </div>
       <div class="col-md-4 sub-popular">
-          <label class="h4">Directions</label>
+          <label class="h4">Direktiv</label>
           <div class="underline-line-sub"></div>
           <textarea class="form-control"  rows="8" cols="50" style="width: 1000px" th:field="*{directions}">
           </textarea>
@@ -102,10 +99,10 @@
       <div class="container">
       <div class="row">
           <div class="col-md-12 sub-header-show">
-              <h4>Kort beskrivning</h4>
+              <h4>Kort Beskrivning</h4>
               <div class="underline-line-sub"></div>
               <textarea class="form-control" rows="8" cols="50" style="width: 1000px" th:field="*{notes.recipeNotes}"></textarea>
-              <button type="submit" class="btn btn-primary">Continue</button>
+              <button type="submit" class="btn btn-primary">Fortsätt</button>
           </div>
       </div>
       </div>

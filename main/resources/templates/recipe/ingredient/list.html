@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                    <a class="nav-link" th:href="@{'/'}">Hem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active-link" href="#">Ingredients</a>
+                    <a class="nav-link active-link" href="#">Ingredienser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -42,18 +42,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mb-6 sub-popular">
-            <h1>Ingredientser</h1>
+            <h1>Ingredienser</h1>
             <div class="underline-line"></div>
             <ul th:each="ingredient: ${recipe.ingredients}">
             <span class="h4" th:text="${ingredient.getDescription() +
                                 '  ' + ingredient.getAmount() + ' ' + ingredient.getUnit()}"></span>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a>
-                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Uppdatera</a>
+                <a class="btn btn-second" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Radera</a>
             </ul>
             <a class="btn btn-primary" href="#"
                th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">Lägg till ingredientser</a>
             <a class="btn btn-primary" href="#"
-               th:href="@{'/recipe/view/' + ${recipeId} + '/'}" role="button">Fortsätt</a>
+               th:href="@{'/recipe/show/' + ${recipeId} + '/'}" role="button">Fortsätt</a>
         </div>
     </div>
 </div>

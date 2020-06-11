@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                    <a class="nav-link" th:href="@{'/'}">Hem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active-link" href="#">Ingredients</a>
+                    <a class="nav-link active-link" href="#">Ingredienser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -51,21 +51,21 @@
     <form  th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient'} " method="post">
         <input type="hidden" th:field="*{id}"/>
         <div class="col-md-4 sub-header-show">
-            <label class="h4">Råvara:</label>
+            <label class="h4">Råvara</label>
             <div class="underline-line-sub"></div>
             <input type="text" class="form-control" th:field="*{description}"/>
         </div>
         <div class="col-md-4 sub-header-show">
-            <label class="h4">Mängd:</label>
+            <label class="h4">Mängd</label>
             <div class="underline-line-sub"></div>
             <input type="text" class="form-control" th:field="*{amount}"/>
         </div>
         <div class="col-md-4 sub-header-show">
-            <label class="h4">Mått:</label>
+            <label class="h4">Mått</label>
             <div class="underline-line-sub"></div>
             <input type="text" class="form-control" th:field="*{unit}"/>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Spara</button>
         <a class="btn btn-primary" href="#"
            th:href="@{'/recipe/show/' + ${recipeId} + '/'}" role="button">Tillbaka</a>
     </form>

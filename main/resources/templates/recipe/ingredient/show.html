@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                    <a class="nav-link" th:href="@{'/'}">Hem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active-link" href="#">Ingredients</a>
+                    <a class="nav-link active-link" href="#">Ingredienser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Contact</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -42,14 +42,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mb-6 sub-popular">
-            <h1>Lägg till ingredientser</h1>
+            <h1>Lägg till ingredienser</h1>
             <div class="underline-line"></div>
             <ul>
                 <p th:text="${ingredient.getDescription() +
                                 '  ' + ingredient.getAmount() + ' ' + ingredient.getUnit()}"></p>
             </ul>
             <a class="btn btn-primary" href="#"
-               th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">Lägg till ingredientser</a>
+               th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" role="button">Lägg till ingredienser</a>
             <a class="btn btn-primary" href="#"
                th:href="@{'/recipe/view/' + ${recipeId} + '/'}" role="button">Fortsätt</a>
         </div>

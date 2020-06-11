@@ -37,7 +37,7 @@
                        th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Byt bild</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger-ui.html">Kontakt</a>
+                    <a class="nav-link" href="/swagger-ui.html">Swagger</a>
                 </li>
             </ul>
         </div>
@@ -56,7 +56,7 @@
 </div>
 <div class="container">
     <div class="row sub-popular">
-        <div class="h2">Categories</div>
+        <div class="h2">Kategori</div>
         <div class="underline-line-sub"></div>
         <ul th:each="category : ${recipe.categories}">
             <span class="h3" th:text="${category.description}"></span>
@@ -67,17 +67,17 @@
 <div class="container">
     <div class="row sub-header-show">
         <div class="col-md-4">
-            <h4>Prep Time:</h4>
+            <h4>Prep Tid</h4>
             <div class="underline-line-sub"></div>
             <p th:text="${recipe.prepTime + '  min'}"></p>
         </div>
         <div class="col-md-4">
-            <h4>Cook Time:</h4>
+            <h4>Tillagnings Tid</h4>
             <div class="underline-line-sub"></div>
             <p th:text="${recipe.cookTime + ' min'}"></p>
         </div>
         <div class="col-md-4">
-            <h4>Servings:</h4>
+            <h4>Portioner</h4>
             <div class="underline-line-sub"></div>
             <p th:text="${recipe.servings + ' port'}"></p>
         </div>
@@ -85,7 +85,7 @@
 </div>
 <div class="container">
     <div class="row sub-popular">
-        <h2>Ingredients</h2>
+        <h2>Ingredienser</h2>
         <div class="underline-line-sub"></div>
         <ul th:each="ingredient: ${recipe.ingredients}">
             <span class="h4" th:text="${ingredient.getDescription() +
@@ -95,7 +95,7 @@
 </div>
 <div class="container">
     <div class="row sub-header-show">
-        <h2>Directions:</h2>
+        <h2>Direktiv</h2>
         <div class="underline-line-sub"></div>
         <div class="col-md-4">
             <p id="directions" th:text="${recipe.directions}">
